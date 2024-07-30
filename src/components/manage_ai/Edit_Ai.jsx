@@ -76,7 +76,7 @@ const Edit_Ai = () => {
               }`}
               onClick={() => handleTabClick(tab)}
             >
-              {tab}
+              {tab} 
             </div>
           ))}
         </div>
