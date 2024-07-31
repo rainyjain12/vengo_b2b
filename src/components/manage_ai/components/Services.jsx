@@ -1,7 +1,18 @@
 import React from 'react';
 import { TiMicrophone } from "react-icons/ti";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Services = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handlePrev = () => {
+    navigate('/greetings')
+  };
+
+  const handleNext = () => {
+    navigate('/dashboard')
+  }
   return (
     <div className="mt-10 pb-6  bg-white poppins shadow-2xl rounded-lg">
       <div className="max-w-4xl mx-auto ">
@@ -70,11 +81,22 @@ const Services = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center ">
-            <button className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={()=>navigate("/dashboard")}>
+        <div className="flex justify-center items-center space-x-4">
+          {location.pathname === '/services' ? (
+            <>
+              <button type="button" className="bg-gray-500 px-10 py-3 rounded-md text-white" onClick={handlePrev}>
+                Previous
+              </button>
+              <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={handleNext}>
+                Finish
+              </button>
+            </>
+          ) : (
+            <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={() => navigate("/dashboard")}>
               Save Changes
             </button>
-          </div>
+          )}
+        </div>
       </div>
     </div>
   );

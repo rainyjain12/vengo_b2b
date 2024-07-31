@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import trash_icon from '../../../assets/icons/trashIcon.svg'
 import { FaPlus } from "react-icons/fa6";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const inputStyle = 'border p-3 w-[60%] text-gray-700 text-base rounded-md bg-white focus:border-[#360374] placeholder:text-sm placeholder:text-gray-600  focus:shadow-md focus:outline-none  '
 const Websites = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [links, setLinks] = useState([
         { label: 'A sales meeting you did', placeholder: 'https://youtube.com', value: '' },
         { label: 'Your company FAQ', placeholder: 'https://www.yourbusiness.com/faq', value: '' },
@@ -25,12 +28,22 @@ const Websites = () => {
         newLinks[index].value = value;
         setLinks(newLinks);
     };
+
+    const handlePrev = () => {
+        navigate('/voice')
+    };
+
+    const handleNext = () => {
+        navigate('/files')
+    };
+
     return (
         <div className='poppins mt-10'>
             <div className="flex flex-col items-center  p-4 bg-white">
                 <div className="max-w-[62rem] w-full flex justify-center items-center flex-col">
-                    <div className="mb-6">
+                    <div className="mb-8 gap-1">
                         <h2 className="text-2xl font-semibold">4. Add your business links</h2>
+                        <span>Provide links to various resources related to your business. You can add or remove links as needed.</span>
                     </div>
 
                     <div className="space-y-4 w-full  text-black placeholder:text-black shadow-lg rounded-lg flex justify-center items-center flex-col">
@@ -65,16 +78,24 @@ const Websites = () => {
                             </button>
                         </div>
                         <div className="mt-6 pb-6">
-                            <div className="flex justify-center items-center">
-                                <button className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={() => navigate("/dashboard")}>
-                                    Save Changes
-                                </button>
+                            <div className="flex justify-center items-center space-x-4">
+                                {location.pathname === '/websites' ? (
+                                    <>
+                                        <button type="button" className="bg-gray-500 px-10 py-3 rounded-md text-white" onClick={handlePrev}>
+                                            Previous
+                                        </button>
+                                        <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={handleNext}>
+                                            Next
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={() => navigate("/dashboard")}>
+                                        Save Changes
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
 

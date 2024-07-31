@@ -9,9 +9,12 @@ import img5 from "../../../assets/images/avatar5.jpg";
 import img6 from "../../../assets/images/avatar6.jpg";
 import img7 from "../../../assets/images/avatar7.jpg";
 import img8 from "../../../assets/images/avatar8.jpg";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Photo = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const { getRootProps, getInputProps } = useDropzone({
         onDrop: (acceptedFiles) => {
@@ -29,6 +32,13 @@ const Photo = () => {
         { id: 6, img: img7, name: 'Joshua' },
         { id: 7, img: img8, name: 'Bradley' },
     ]
+    const handlePrev = () => {
+        navigate('/create-ai')
+    };
+
+    const handleNext = () => {
+        navigate('/voice')
+    };
     return (
         <div className='poppins mt-10'>
             <span className='text-black text-2xl font-semibold '>2. Give Your AI a Face</span>
@@ -87,6 +97,22 @@ const Photo = () => {
                         })}
 
                     </div>
+                </div>
+                <div className="flex justify-center items-center space-x-4">
+                    {location.pathname === '/photo' ? (
+                        <>
+                            <button type="button" className="bg-gray-500 px-10 py-3 rounded-md text-white" onClick={handlePrev}>
+                                Previous
+                            </button>
+                            <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={handleNext}>
+                                Next
+                            </button>
+                        </>
+                    ) : (
+                        <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={() => navigate("/dashboard")}>
+                            Save Changes
+                        </button>
+                    )}
                 </div>
             </div>
 

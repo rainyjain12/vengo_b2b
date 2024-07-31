@@ -41,23 +41,23 @@ const History = () => {
     <div className="flex flex-col lg:flex-row h-screen">
       <div className="sidebar bg-gray-200 w-full lg:w-64 p-4 flex flex-col">
        
-        <div className="filter-container mb-4 flex flex-wrap gap-4">
-          <div className="ai-dropdown flex items-center gap-2">
+        <div className="filter-container mb-4 flex flex-wrap gap-3 text-[15px] ">
+          <div className="ai-dropdown flex flex-col w-full  items-start ">
             <label htmlFor="aiSelect" className="font-medium" style={{color:'#222222'}}>Select AI:</label>
-            <select id="aiSelect" className="p-2 border border-gray-300 rounded" style={{color:'#7C7C7C'}}>
+            <select id="aiSelect" className="p-2 border border-gray-300 rounded-[8px] w-full focus:outline-none" style={{color:'#7C7C7C'}}>
               <option value="joeMarkland">Joe Markland</option>
               <option value="silverMarketing">Silver Marketing</option>
               <option value="jasonSherman">Jason Sherman</option>
               <option value="kristinLaSalle">Kristin LaSalle</option>
             </select>
           </div>
-          <div className="date-picker flex items-center gap-2">
+          <div className="date-picker flex flex-col items-start w-full">
             <label htmlFor="dateFrom" className="font-medium" style={{color:'#222222'}}>From:</label>
-            <Flatpickr id="dateFrom" className="w-40 p-2 border border-gray-300 rounded" style={{color:'#7C7C7C'}}/>
+            <Flatpickr id="dateFrom" className="w-full p-2 border border-gray-300 rounded-[8px] focus:outline-none" placeholder='Select Date' style={{color:'#7C7C7C'}}/>
           </div>
-          <div className="date-picker flex items-center gap-2">
+          <div className="date-picker flex flex-col items-start w-full ">
             <label htmlFor="dateTo" className="font-medium" style={{color:'#222222'}}>Over:</label>
-            <Flatpickr id="dateTo" className="w-40 p-2 border border-gray-300 rounded" style={{color:'#7C7C7C'}} />
+            <Flatpickr id="dateTo" className="w-full p-2 border border-gray-300 rounded-[8px] focus:outline-none" placeholder='Select Date' style={{color:'#7C7C7C'}} />
           </div>
         </div>
         <div className="users-tabs flex flex-col gap-2">

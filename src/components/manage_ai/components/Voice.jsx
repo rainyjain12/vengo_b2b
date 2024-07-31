@@ -1,17 +1,27 @@
 import React from 'react'
 import voice from '../../../assets/icons/pla-btn.svg';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Voice = () => {
-    const ImageArray =[
-        {id:0,img:voice,name:'Samantha'},
-        {id:1,img:voice,name:'Lisa'},
-        {id:2,img:voice,name:'Kristin'},
-        {id:3,img:voice,name:'Jennifer'},
-        {id:4,img:voice,name:'Charles'},
-        {id:5,img:voice,name:'David'},
-        {id:6,img:voice,name:'Joshua'},
-        {id:7,img:voice,name:'Bradley'},
+    const location = useLocation();
+    const navigate = useNavigate();
+    const ImageArray = [
+        { id: 0, img: voice, name: 'Samantha' },
+        { id: 1, img: voice, name: 'Lisa' },
+        { id: 2, img: voice, name: 'Kristin' },
+        { id: 3, img: voice, name: 'Jennifer' },
+        { id: 4, img: voice, name: 'Charles' },
+        { id: 5, img: voice, name: 'David' },
+        { id: 6, img: voice, name: 'Joshua' },
+        { id: 7, img: voice, name: 'Bradley' },
     ]
+    const handlePrev = () => {
+        navigate('/photo')
+    };
+
+    const handleNext = () => {
+        navigate('/websites')
+    };
     return (
         <div className='poppins mt-10'>
             <span className='text-black text-2xl font-semibold '>3. Choose a Voice</span>
@@ -27,7 +37,24 @@ const Voice = () => {
                         )
                     })}
                 </div>
+                <div className="flex justify-center items-center space-x-4">
+                    {location.pathname === '/voice' ? (
+                        <>
+                            <button type="button" className="bg-gray-500 px-10 py-3 rounded-md text-white" onClick={handlePrev}>
+                                Previous
+                            </button>
+                            <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={handleNext}>
+                                Next
+                            </button>
+                        </>
+                    ) : (
+                        <button type="button" className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={() => navigate("/dashboard")}>
+                            Save Changes
+                        </button>
+                    )}
+                </div>
             </div>
+
 
         </div>
     )

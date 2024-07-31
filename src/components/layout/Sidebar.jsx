@@ -26,7 +26,7 @@ const menu = [
       { id: 7, title: "Sliver Marketing", tabTitle: "", slugs: "/edit-ai" },
       { id: 8, title: "Jason Sherman", tabTitle: "", slugs: "/edit-ai" },
       { id: 9, title: "Kristin LaSalle", tabTitle: "", slugs: "/edit-ai" },
-      { id: 10, title: 'Create New AI', tabTitle: "", slugs: "/edit-ai" }
+      { id: 10, title: 'Create New AI', tabTitle: "", slugs: "/create-ai" }
     ] 
    },
   { id: 1, title: "Analytics", tabTitle:"Dashboard", icon:<FaChartLine/> , slugs: "/dashboard" },

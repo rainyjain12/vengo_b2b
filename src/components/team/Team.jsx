@@ -1,44 +1,50 @@
 import React from 'react';
 
+const inputStyle = 'border p-3 rounded-md text-base font-normal w-full  bg-white focus:border-[#6c63ff]  focus:shadow-md focus:outline-none  '
+
 const Team = () => {
     return (
-        <main className="flex-1 p-6 ">
+        <main className="flex-1 mt-8 ">
             <div className="main-content ">
                 <div className="form team-form space-y-6">
                     <div className="team-member p-6 bg-white shadow-2xl rounded-lg">
-                        <h3 className="text-xl font-semibold mb-4 text-purple-900">Add Team Member</h3>
-                        <div className="input-field mb-4">
-                            <label className="block text-sm font-medium mb-1 text-left" htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                className="w-full p-2 border border-gray-300 rounded"
-                                placeholder="Enter name"
-                            />
+                        {/* <div className="mb-6">
+                            <h2 className="text-2xl font-semibold">Add Team Member</h2>
+                        </div> */}
+                        <div className="grid grid-cols-2 gap-4 m-auto text-start text-lg font-medium">
+                            <div className="input-field ">
+                                <label   htmlFor="name">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    className={inputStyle}
+                                    placeholder="Enter name"
+                                />
+                            </div>
+                            <div className="input-field ">
+                                <label   htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className={inputStyle}
+                                    placeholder="Enter email"
+                                />
+                            </div>
+                            <div className="input-field mb-4">
+                                <label   htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    className={inputStyle}
+                                    placeholder="Enter password"
+                                />
+                            </div>
                         </div>
                         <div className="input-field mb-4">
-                            <label className="block text-sm font-medium mb-1 text-left" htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className="w-full p-2 border border-gray-300 rounded"
-                                placeholder="Enter email"
-                            />
-                        </div>
-                        <div className="input-field mb-4">
-                            <label className="block text-sm font-medium mb-1 text-left" htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                className="w-full p-2 border border-gray-300 rounded"
-                                placeholder="Enter password"
-                            />
-                        </div>
-                        <div className="input-field mb-4">
-                            <label className="block text-sm font-medium mb-1 text-left" htmlFor="access">Access to Pages</label>
+                            <label className="block text-lg font-medium mb-1 text-left" htmlFor="access">Access to Pages</label>
                             <div className="access-options grid grid-cols-2 gap-2">
                                 <label className="flex items-center">
                                     <input type="checkbox" name="access" value="dashboard" className="mr-2" /> Dashboard
@@ -63,15 +69,14 @@ const Team = () => {
                                 </label>
                             </div>
                         </div>
-                        <button className="btn btn-primary bg-purple-700 text-white py-2 px-4 rounded hover:bg-purple-800">
+                        <button className="bg-[#5348c8] px-10 py-3 rounded-md text-white" onClick={() => navigate("/dashboard")}>
                             Add Team Member
                         </button>
-                    </div>
-
-                    <div className="divider border-t border-gray-300 my-6"></div>
+                        <div className="divider border-t border-gray-300 my-6"></div>
                     <div className="existing-team">
                         <h3 className="text-2xl font-semibold mb-4 text-purple-900">Existing Team Members</h3>
                         {/* This section will list existing team members dynamically */}
+                    </div>
                     </div>
                 </div>
             </div>
