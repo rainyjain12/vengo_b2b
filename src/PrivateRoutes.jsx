@@ -1,6 +1,5 @@
 import React,{ lazy } from "react";
 import Layout from "./components/layout/Layout.jsx";
-
   
 const Dashboard = lazy(() => import('./components/dashboard/Dashboard.jsx'))
 const Sales_leads = lazy(() => import('./components/sales-leads/Sales_leads.jsx'))
@@ -9,6 +8,8 @@ const Integration = lazy(() => import('./components/integration/Integration.jsx'
 const Billing = lazy(() => import('./components/billing/Billing.jsx'))
 const Customize = lazy(()=>import('./components/customize/Customize.jsx'))
 const History = lazy(()=>import("./components/chat-history/History.jsx"))
+const Team = lazy(()=>import("./components/team/Team.jsx"))
+const Account = lazy(()=>import("./components/account/Account.jsx"))
 
 export default function privateRoutes() {
   return {
@@ -21,6 +22,8 @@ export default function privateRoutes() {
       {path:"/billing",element:<Billing/>},
       {path:"/customize",element:<Customize/>},
       {path:"/chat-history",element:<History/>},
+      {path:"/team",element:<Team/>},
+      {path:"/settings",element:<Account/>},
     ],
   };
 }
