@@ -5,18 +5,14 @@ import { FaUsers } from "react-icons/fa";
 
 const Billing = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
-
   return (
-    <div className="flex  ">
-      <div className="flex p-8 bg-white text-start">
-        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">Plan & Billing</h2>
+    <div className="flex mt-8">
+      <div className="flex bg-white text-start">
+        <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-lg">
           <div className="mb-6">
             <p className="font-bold">Pro Plan (50 chat hours)</p>
             <p className="mt-2 flex items-center gap-1"><IoChatbubbleEllipses /> Chat Hours left: <strong>32</strong></p>
@@ -28,7 +24,8 @@ const Billing = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold mb-4">Billing Information</h3>
+            <hr/>
+            <h3 className="text-xl font-bold mb-4 mt-4">Billing Information</h3>
             <p><strong>Name:</strong> John Doe</p>
             <p className="mt-2"><strong>Company:</strong> VengoAI Inc.</p>
             <p className="mt-2"><strong>Billing address:</strong> 1234 Elm Street, Some City, CA 12345</p>

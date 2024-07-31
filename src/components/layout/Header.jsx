@@ -129,12 +129,16 @@ const Header = ({ handleDrawerToggle, isMobile }) => {
                 )}
 
                 <Title variant="h6" className='md:text-base text-sm  font-semibold lg:ml-3'>
-                    {location.pathname === '/customers' ? 'Customer Management' :
-                        location.pathname === '/ai-management' ? 'AI Identity Management' :
+                    {location.pathname === '/chat-history' ? 'Chat History' :
+                        location.pathname === '/edit-ai' ? 'AI Identity Management' :
                             location.pathname === '/analytics' ? 'Analytics & Reporting' :
-                                location.pathname === '/access-control' ? 'Access Control' :
+                                location.pathname === '/customize' ? '' :
                                     location.pathname === '/integration' ? 'Integration' :
-                                        'Dashboard'}
+                                        location.pathname === '/settings' ? 'Account Settings' :
+                                            location.pathname === '/team' ? 'Manage Team' :
+                                                location.pathname === '/sales' ? 'Sales Leads' :
+                                                    location.pathname === '/billing' ? 'Plan & Billing' :
+                                                        'Dashboard'}
                 </Title>
 
                 <div className="flex items-center justify-center">

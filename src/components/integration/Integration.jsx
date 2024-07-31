@@ -16,14 +16,14 @@ const Integration = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="flex-1 p-8">
-        <div className="space-y-6 w-[60%] bg-white shadow-lg rounded-lg p-6">
+    <div className="flex mt-8">
+      <div className="flex-1 ">
+        <div className="space-y-6 md:w-[60%] bg-white shadow-2xl rounded-lg p-6">
           <div>
-            <label htmlFor="aiSelect" className="flex mb-2 text-lg font-semibold">Select AI:</label>
+            <label htmlFor="aiSelect" className="flex mb-2 text-xl font-medium">Select AI:</label>
             <select
               id="aiSelect"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded focus:outline-none"
               value={selectedAI}
               onChange={handleSelectChange}
             >
@@ -42,8 +42,8 @@ const Integration = () => {
           </button>
           <textarea
             id="widgetCode"
-            className="w-full p-2 border rounded"
-            rows="10"
+            className="w-full p-2 border rounded focus:outline-none"
+            rows="6"
             readOnly
             value={`<!-- Chat Widget Code -->
 <script src="https://example.com/chat-widget.js"></script>

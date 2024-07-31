@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from '@mui/material';
-import {
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
-} from '@mui/material';
+import {IconButton,Drawer,List,ListItem, ListItemIcon, ListItemText, Collapse} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';  
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { FaChartLine } from "react-icons/fa";
-import { MdGroups2 } from "react-icons/md";
+import { HiMiniPaintBrush } from "react-icons/hi2";
 import { FaRobot } from "react-icons/fa";
 import { SiSimpleanalytics } from "react-icons/si";
-import { FaLock, FaBell } from "react-icons/fa";
 import Logo from "../../assets/images/vengo-logo.png";
 import { PiAddressBookTabsFill } from "react-icons/pi";
-import { padding } from "@mui/system";
 import { FaPlus } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa6";
@@ -40,7 +30,7 @@ const menu = [
     ] 
    },
   { id: 1, title: "Analytics", tabTitle:"Dashboard", icon:<FaChartLine/> , slugs: "/dashboard" },
-  { id: 2, title: "Customize",tabTitle:"",icon:<MdGroups2 />,  slugs: "/customize" },
+  { id: 2, title: "Customize",tabTitle:"",icon:<HiMiniPaintBrush />,  slugs: "/customize" },
   { id: 3, title: "Chat History", tabTitle:"Chat History",icon:<SiSimpleanalytics />, slugs: "/chat-history" },
   { id: 4, title: "Sales Leads", tabTitle:"Sales Leads",icon:<PiAddressBookTabsFill />, slugs: "/sales" },
   { id: 5, title: "Integration", tabTitle:"Integration",icon:<FaPlug />, slugs: "/integration" },
@@ -94,6 +84,16 @@ const Sidebar = ({ setActiveItem, activeTabId, setActiveTabId, handleDrawerToggl
           width: drawerWidth,
           backgroundColor: "#360374 !important",
           borderRight: "1px solid white !important",
+          '&::-webkit-scrollbar': {
+            width: '0px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#360374',
+            borderRadius: '10px',
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: '#360374',
+          },
         },
       }}
       anchor="left"

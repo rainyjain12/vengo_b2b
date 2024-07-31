@@ -19,15 +19,15 @@ const Photo = () => {
         },
     });
 
-    const ImageArray =[
-        {id:0,img:img1,name:'Samantha'},
-        {id:1,img:img2,name:'Lisa'},
-        {id:2,img:img3,name:'Kristin'},
-        {id:3,img:img4,name:'Jennifer'},
-        {id:4,img:img5,name:'Charles'},
-        {id:5,img:img6,name:'David'},
-        {id:6,img:img7,name:'Joshua'},
-        {id:7,img:img8,name:'Bradley'},
+    const ImageArray = [
+        { id: 0, img: img1, name: 'Samantha' },
+        { id: 1, img: img2, name: 'Lisa' },
+        { id: 2, img: img3, name: 'Kristin' },
+        { id: 3, img: img4, name: 'Jennifer' },
+        { id: 4, img: img5, name: 'Charles' },
+        { id: 5, img: img6, name: 'David' },
+        { id: 6, img: img7, name: 'Joshua' },
+        { id: 7, img: img8, name: 'Bradley' },
     ]
     return (
         <div className='poppins mt-10'>
@@ -40,7 +40,7 @@ const Photo = () => {
                         height: "15vmax",
                         backgroundColor: "white",
                         border: "1px dashed #B4B4B4",
-                        borderRadius: "20px",
+                        // borderRadius: "20px",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
@@ -48,18 +48,18 @@ const Photo = () => {
                         color: "rgba(0, 0, 0, 0.87)",
                         WebkitTransition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-                        borderRadius: "10px",
+                        // borderRadius: "10px",
                         // boxShadow:
                         // "0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12)",
                     }}
                 >
                     <input {...getInputProps()} />
-                    {uploadedFiles.length ==0?
-                    <div className='flex flex-col justify-center items-center'>
-                        <FiUpload style={{ fontSize: "3.5vmax", color: "#B4B4B4" }} />
-                        <span className='text-[#B4B4B4]'>Select or drag and drop</span>
-                    </div>
-                    :''}
+                    {uploadedFiles.length == 0 ?
+                        <div className='flex flex-col justify-center items-center'>
+                            <FiUpload style={{ fontSize: "3.5vmax", color: "#B4B4B4" }} />
+                            <span className='text-[#B4B4B4]'>Select or drag and drop</span>
+                        </div>
+                        : ''}
                     {/* <MdAddPhotoAlternate style={{ fontSize: "4vmax", color: "#B4B4B4" }} /> */}
                     <ul>
                         {uploadedFiles.map((file) => (
@@ -72,24 +72,24 @@ const Photo = () => {
                     </ul>
                 </div>
                 <div className='text-black text-2xl mt-6 font-medium '>
-                <span>or choose one of ours:</span>
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-16 mt-10 mb-10 text-center '>
-        
-          {ImageArray.map((data)=>{
-            return(
-            <div className='font-normal text-base flex flex-col justify-center space-y-2  items-center'>
-                <img src={data.img} alt='avatar' className='rounded-full h-28 w-28'/>
-                <span>{data.name}</span>
-                <input className='h-4 w-4' type="checkbox" id="avatar1" name="avatar1" value="avatar"></input>
-            </div>
-            )
+                    <span>or choose one of ours:</span>
+                    <div className='grid grid-cols-2 md:grid-cols-4 gap-16 mt-10 mb-10 text-center '>
 
-          })}
-       
-      </div>
+                        {ImageArray.map((data) => {
+                            return (
+                                <div className='font-normal text-base flex flex-col justify-center space-y-2  items-center'>
+                                    <img src={data.img} alt='avatar' className='rounded-full h-28 w-28' />
+                                    <span>{data.name}</span>
+                                    <input className='h-4 w-4' type="checkbox" id="avatar1" name="avatar1" value="avatar"></input>
+                                </div>
+                            )
+
+                        })}
+
+                    </div>
+                </div>
             </div>
-            </div>
-            
+
         </div>
     )
 }

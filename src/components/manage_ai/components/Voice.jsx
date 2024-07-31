@@ -1,5 +1,5 @@
 import React from 'react'
-import voice from '../../../assets/icons/img-svg.svg';
+import voice from '../../../assets/icons/pla-btn.svg';
 
 const Voice = () => {
     const ImageArray =[
@@ -16,7 +16,7 @@ const Voice = () => {
         <div className='poppins mt-10'>
             <span className='text-black text-2xl font-semibold '>3. Choose a Voice</span>
             <div className='mt-6 space-y-4 rounded-lg p-4 shadow-lg  flex flex-col justify-center items-center'>
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-16 mt-10 mb-10 text-center '>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-16 mt-10 mb-10 text-center '>
                     {ImageArray.map((data) => {
                         return (
                             <div className='font-normal text-base flex flex-col justify-center space-y-2  items-center'>
