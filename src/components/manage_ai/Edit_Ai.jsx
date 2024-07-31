@@ -45,4 +45,4 @@ const Edit_Ai = () => {
   );
 };
 
-export default Edit_Ai;
+export default Edit_Ai

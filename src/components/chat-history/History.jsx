@@ -40,7 +40,7 @@ const History = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen">
       <div className="sidebar bg-gray-200 w-full lg:w-64 p-4 flex flex-col">
-        <h1 className="text-2xl font-bold mb-4" style={{color:'#373535'}}>Chat History</h1>
+       
         <div className="filter-container mb-4 flex flex-wrap gap-4">
           <div className="ai-dropdown flex items-center gap-2">
             <label htmlFor="aiSelect" className="font-medium" style={{color:'#222222'}}>Select AI:</label>

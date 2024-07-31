@@ -39,8 +39,8 @@ const Photo = () => {
                         width: "90%",
                         height: "15vmax",
                         backgroundColor: "white",
-                        border: "1px dashed #B4B4B4",
-                        // borderRadius: "20px",
+                        border: "1px dashed black",
+                        borderRadius: "20px",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
@@ -48,7 +48,7 @@ const Photo = () => {
                         color: "rgba(0, 0, 0, 0.87)",
                         WebkitTransition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-                        // borderRadius: "10px",
+                        borderRadius: "4px",
                         // boxShadow:
                         // "0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12)",
                     }}
