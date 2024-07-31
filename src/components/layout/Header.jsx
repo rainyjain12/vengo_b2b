@@ -134,6 +134,7 @@ const Header = ({ handleDrawerToggle, isMobile }) => {
                             location.pathname === '/analytics' ? 'Analytics & Reporting' :
                                 location.pathname === '/access-control' ? 'Access Control' :
                                     location.pathname === '/notifications' ? 'Notifications' :
+                                    location.pathname === '/integration' ? 'Integration' :
                                         'Dashboard'}
                 </Title>
 

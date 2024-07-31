@@ -36,10 +36,17 @@ const Photo = () => {
                 <div
                     {...getRootProps()}
                     style={{
+<<<<<<< HEAD
                         width: "30vmax",
                         height: "15vmax",
                         backgroundColor: "white",
                         border: "1px dashed black",
+=======
+                        width: "90%",
+                        height: "15vmax",
+                        backgroundColor: "white",
+                        border: "1px dashed #B4B4B4",
+>>>>>>> 2b18af6 (manage ai screen complete)
                         borderRadius: "20px",
                         display: "flex",
                         justifyContent: "center",
@@ -48,16 +55,29 @@ const Photo = () => {
                         color: "rgba(0, 0, 0, 0.87)",
                         WebkitTransition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                         transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+<<<<<<< HEAD
                         borderRadius: "4px",
+=======
+                        borderRadius: "10px",
+>>>>>>> 2b18af6 (manage ai screen complete)
                         // boxShadow:
                         // "0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12)",
                     }}
                 >
                     <input {...getInputProps()} />
+<<<<<<< HEAD
                     <div className='flex flex-col justify-center items-center'>
                         <FiUpload style={{ fontSize: "3.5vmax", color: "#B4B4B4" }} />
                         <span>Select or drag and drop</span>
                     </div>
+=======
+                    {uploadedFiles.length ==0?
+                    <div className='flex flex-col justify-center items-center'>
+                        <FiUpload style={{ fontSize: "3.5vmax", color: "#B4B4B4" }} />
+                        <span className='text-[#B4B4B4]'>Select or drag and drop</span>
+                    </div>
+                    :''}
+>>>>>>> 2b18af6 (manage ai screen complete)
                     {/* <MdAddPhotoAlternate style={{ fontSize: "4vmax", color: "#B4B4B4" }} /> */}
                     <ul>
                         {uploadedFiles.map((file) => (
@@ -78,7 +98,11 @@ const Photo = () => {
             <div className='font-normal text-base flex flex-col justify-center space-y-2  items-center'>
                 <img src={data.img} alt='avatar' className='rounded-full h-28 w-28'/>
                 <span>{data.name}</span>
+<<<<<<< HEAD
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
+=======
+                <input className='h-4 w-4' type="checkbox" id="avatar1" name="avatar1" value="avatar"></input>
+>>>>>>> 2b18af6 (manage ai screen complete)
             </div>
             )
 

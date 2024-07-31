@@ -3,9 +3,19 @@ import React from 'react'
  const inputStyle='border p-3 rounded-md  bg-white focus:border-[#6c63ff]  focus:shadow-md focus:outline-none  '
 const Info = () => {
   return (
+<<<<<<< HEAD
     <div className='poppins mt-10'>
         <span className='text-black text-2xl font-semibold '>1. Business Info</span>
         <form  className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg  " >
+=======
+    <div className='poppins mt-10 flex flex-col justify-center items-center '>
+       <div className="mb-4">
+          <h2 className="text-2xl font-semibold">1. Business Info</h2>
+        </div>
+        {/* <span className='text-black text-2xl font-semibold '>1. Business Info</span> */}
+        <div className='mt-6 shadow-lg rounded-lg w-full flex justify-center items-center '> 
+        <form  className="mb-0  space-y-4 p-4  w-[70%] " >
+>>>>>>> 2b18af6 (manage ai screen complete)
            <div className="flex flex-col gap-[10px] m-auto text-start">
                <label htmlFor="full-name">Your Full Name:</label>
             <input
@@ -80,6 +90,10 @@ const Info = () => {
             </button>
           </div>
         </form>
+<<<<<<< HEAD
+=======
+        </div>
+>>>>>>> 2b18af6 (manage ai screen complete)
     </div>
   )
 }
