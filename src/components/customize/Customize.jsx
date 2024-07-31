@@ -85,7 +85,7 @@ const Customize = () => {
             className={`tab-button ${activeTab === 'videoAvatar' ? 'bg-purple-700 text-white' : 'bg-gray-300'} py-2 px-4 flex-1 rounded-b md:rounded-r md:rounded-b-none`}
             onClick={() => setActiveTab('videoAvatar')}
           >
-            Video Avatar
+            Video Avatar 
           </button>
         </div>
 
