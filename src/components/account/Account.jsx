@@ -40,7 +40,7 @@ const Account = () => {
                                 placeholder="Website Url"
                                 name="website"
                                 className={inputStyle}
-                                value={'www.doeenterprises.com'}
+                                value={'www.doeenterprises.com '}
                             />
                         </div>
 
