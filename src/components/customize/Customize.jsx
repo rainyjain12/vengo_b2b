@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { FiUpload } from "react-icons/fi";
+import { FiUpload } from 'react-icons/fi';
+import { MdArrowDropDown } from 'react-icons/md';
+import { RiSendPlaneFill } from "react-icons/ri";
 
 const Customize = () => {
   const [activeTab, setActiveTab] = useState('chatWidget');
   const [selectedImage, setSelectedImage] = useState(null);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
   const [settings, setSettings] = useState({
     headingTitleColor: '#360374',
-    headingBackgroundColor: '#e5e5ff',
+    headingBackgroundColor: '#fff',
     firstMessage: 'Hello! 👋 How can I help you today?',
     aiMessageColor: '#360374',
     aiMessageBackgroundColor: '#e5e5ff',
-    userMessageColor: '#360374',
-    userMessageBackgroundColor: '#5348c8',
+    userMessageColor: '#fff',
+    userMessageBackgroundColor: '#360374',
     widgetColor: '#360374',
   });
 
@@ -20,12 +21,18 @@ const Customize = () => {
     if (e.target.files.length > 0) {
       const file = e.target.files[0];
       setSelectedImage(URL.createObjectURL(file));
-      setUploadedFiles([file]);
     }
   };
 
-  const previewAvatar = () => {
-    // setPreviewImage(selectedImage);
+  const updateWidget = () => {
+    document.getElementById('chatHeading').style.color = settings.headingTitleColor;
+    document.getElementById('chatHeader').style.backgroundColor = settings.headingBackgroundColor;
+    document.getElementById('aiMessage').style.color = settings.aiMessageColor;
+    document.getElementById('aiMessage').style.backgroundColor = settings.aiMessageBackgroundColor;
+    document.getElementById('userMessage').style.color = settings.userMessageColor;
+    document.getElementById('userMessage').style.backgroundColor = settings.userMessageBackgroundColor;
+    document.getElementById('chatWidget').style.backgroundColor = settings.widgetColor;
+    document.getElementById('aiMessage').innerHTML = `<p>${settings.firstMessage}</p>`;
   };
 
   const handleDrop = (e) => {
@@ -42,105 +49,156 @@ const Customize = () => {
   const handleDragOver = (e) => {
     e.preventDefault();
   };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setSettings({
-      ...settings,
-      [name]: value,
-    });
-  };
-
-  const updateWidget = () => {
-    document.getElementById('chatHeading').style.color = settings.headingTitleColor;
-    document.getElementById('chatHeader').style.backgroundColor = settings.headingBackgroundColor;
-    document.getElementById('aiMessage').style.color = settings.aiMessageColor;
-    document.getElementById('aiMessage').style.backgroundColor = settings.aiMessageBackgroundColor;
-    document.getElementById('userMessage').style.color = settings.userMessageColor;
-    document.getElementById('userMessage').style.backgroundColor = settings.userMessageBackgroundColor;
-    document.getElementById('chatWidget').style.backgroundColor = settings.widgetColor;
-    document.getElementById('aiMessage').innerHTML = `<p>${settings.firstMessage}</p>`;
+  const previewAvatar = () => {
+    // setPreviewImage(selectedImage);
   };
 
   return (
-    <div className="p-4 min-h-screen">
-      <div className="bg-white shadow-xl rounded-lg p-4 md:p-6">
-        <div className="mb-4">
-          <label htmlFor="aiDropdown" className="block mb-2 text-purple-700 font-semibold text-xl">Select AI:</label>
-          <select id="aiDropdown" name="aiDropdown" className="w-full p-2 border border-gray-300 rounded">
+    <div className="mt-8  min-h-screen">
+      <div className="flex px-4 items-center border-b border-gray-200 mb-3 gap-12 justify-start bg-white shadow-2xl rounded-md py-3">
+        <button
+          className={`flex py-3 px-3 text-center font-semibold rounded-md ${activeTab === 'chatWidget' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+          onClick={() => setActiveTab('chatWidget')}
+        >
+          Chat Widget
+        </button>
+        <button
+          className={`flex py-3 px-3 text-center font-semibold rounded-md ${activeTab === 'videoAvatar' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+          onClick={() => setActiveTab('videoAvatar')}
+        >
+          Video Avatar
+        </button>
+        <div className=" flex items-center  ml-12 gap-3  ">
+          <label htmlFor="aiDropdown" className="flex  text-black font-medium text-lg">Select AI:</label>
+          <select id="aiDropdown" name="aiDropdown" className=" p-2 px-20 border border-gray-300 rounded">
             <option value="joeMarkland">Joe Markland</option>
             <option value="silverMarketing">Silver Marketing</option>
             <option value="jasonSherman">Jason Sherman</option>
             <option value="kristinLaSalle">Kristin LaSalle</option>
           </select>
         </div>
-        <div className="flex flex-col md:flex-row mb-6">
-          <button
-            className={`tab-button ${activeTab === 'chatWidget' ? 'bg-purple-700 text-white' : 'bg-gray-300'} py-2 px-4 flex-1 rounded-t md:rounded-l md:rounded-t-none`}
-            onClick={() => setActiveTab('chatWidget')}
-          >
-            Chat Widget
-          </button>
-          <button
-            className={`tab-button ${activeTab === 'videoAvatar' ? 'bg-purple-700 text-white' : 'bg-gray-300'} py-2 px-4 flex-1 rounded-b md:rounded-r md:rounded-b-none`}
-            onClick={() => setActiveTab('videoAvatar')}
-          >
-            Video Avatar 
-          </button>
-        </div>
+      </div>
+      <div className=" w-full mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className={`  ${activeTab === 'chatWidget' ? 'block' : 'hidden'}`}>
+          <div className=" flex ">
+            <div className="bg-white p-6 rounded-lg shadow-md w-[40%]">
+              <h2 className="text-xl font-semibold mb-4">Chat Widget Settings</h2>
 
-        <div id="chatWidget" className={`tab-content ${activeTab === 'chatWidget' ? 'block' : 'hidden'}`}>
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="customize-settings w-full md:w-1/2 p-4 bg-white shadow-md rounded-lg">
-              <label htmlFor="headingTitleColor" className="block mb-2">Heading title color:</label>
-              <input type="color" id="headingTitleColor" name="headingTitleColor" value={settings.headingTitleColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block mb-2">Heading Title Color:</label>
+                <input
+                  type="color"
+                  value={settings.headingTitleColor}
+                  onChange={(e) => setSettings({ ...settings, headingTitleColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
 
-              <label htmlFor="headingBackgroundColor" className="block mb-2">Heading background color:</label>
-              <input type="color" id="headingBackgroundColor" name="headingBackgroundColor" value={settings.headingBackgroundColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block  mb-2">Heading Background Color:</label>
+                <input
+                  type="color"
+                  value={settings.headingBackgroundColor}
+                  onChange={(e) => setSettings({ ...settings, headingBackgroundColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
 
-              <label htmlFor="firstMessage" className="block mb-2">First Message:</label>
-              <input type="text" id="firstMessage" name="firstMessage" value={settings.firstMessage} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block mb-2">AI Message Color:</label>
+                <input
+                  type="color"
+                  value={settings.aiMessageColor}
+                  onChange={(e) => setSettings({ ...settings, aiMessageColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
 
-              <label htmlFor="aiMessageColor" className="block mb-2">AI message color:</label>
-              <input type="color" id="aiMessageColor" name="aiMessageColor" value={settings.aiMessageColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block mb-2">AI Message Background Color:</label>
+                <input
+                  type="color"
+                  value={settings.aiMessageBackgroundColor}
+                  onChange={(e) => setSettings({ ...settings, aiMessageBackgroundColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
 
-              <label htmlFor="aiMessageBackgroundColor" className="block mb-2">AI message background color:</label>
-              <input type="color" id="aiMessageBackgroundColor" name="aiMessageBackgroundColor" value={settings.aiMessageBackgroundColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block mb-2">User Message Color:</label>
+                <input
+                  type="color"
+                  value={settings.userMessageColor}
+                  onChange={(e) => setSettings({ ...settings, userMessageColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
 
-              <label htmlFor="userMessageColor" className="block mb-2">User message color:</label>
-              <input type="color" id="userMessageColor" name="userMessageColor" value={settings.userMessageColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block mb-2">User Message Background Color:</label>
+                <input
+                  type="color"
+                  value={settings.userMessageBackgroundColor}
+                  onChange={(e) => setSettings({ ...settings, userMessageBackgroundColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
 
-              <label htmlFor="userMessageBackgroundColor" className="block mb-2">User message background color:</label>
-              <input type="color" id="userMessageBackgroundColor" name="userMessageBackgroundColor" value={settings.userMessageBackgroundColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
+              <div className="mb-4 flex text-start justify-between" >
+                <label className="block mb-2">Widget Color:</label>
+                <input
+                  type="color"
+                  value={settings.widgetColor}
+                  onChange={(e) => setSettings({ ...settings, widgetColor: e.target.value })}
+                  className="w-1/4 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2">First Message:</label>
+                <input
+                  type="text"
+                  value={settings.firstMessage}
+                  onChange={(e) => setSettings({ ...settings, firstMessage: e.target.value })}
+                  className="w-full border rounded p-2"
+                />
+              </div>
 
-              <label htmlFor="widgetColor" className="block mb-2">Widget icon color:</label>
-              <input type="color" id="widgetColor" name="widgetColor" value={settings.widgetColor} onChange={handleInputChange} className="w-full mb-4 p-2 border border-gray-300 rounded" />
-
-              <button className="btn btn-primary bg-purple-700 text-white py-2 px-4 rounded" onClick={updateWidget}>Update</button>
+              <button
+                onClick={updateWidget}
+                className="bg-purple-600 text-white py-2 px-4 rounded-lg mt-4 hover:bg-purple-700 transition"
+              >
+                Update Widget
+              </button>
             </div>
 
-            <div className="chat-widget-preview w-full md:w-1/2 p-4 bg-white shadow-md rounded-lg">
-              <div className="chat-widget border border-gray-300 rounded-lg p-4 flex flex-col shadow-md">
-                <div className="chat-header p-4" id="chatHeader" style={{ backgroundColor: '#360374' }}>
-                  <span className="chat-heading text-xl font-semibold" id="chatHeading" style={{ color: 'white' }}>Business Name</span>
+
+            <div className="bg-white p-6 rounded-lg shadow-md w-full ">
+              <h2 className="text-xl  font-semibold mb-4">Chat Widget Preview</h2>
+              <div id="chatWidget" className="border rounded-lg p-4 bg-gray-100 flex flex-col h-full">
+                <div id="chatHeader" className="p-3 flex justify-center border-[#360374] border rounded-lg " style={{ backgroundColor: settings.headingBackgroundColor }}>
+                  <span id="chatHeading" style={{ color: settings.headingTitleColor }} className="text-xl font-medium flex items-center justify-center">Business Name</span>
                 </div>
-                <div className="chat-messages flex-1 overflow-y-auto p-2">
-                  <div className="ai-message mb-4 p-2 rounded" id="aiMessage" style={{ color: settings.aiMessageColor, backgroundColor: settings.aiMessageBackgroundColor }}>
-                    <p>{settings.firstMessage}</p>
-                  </div>
-                  <div className="user-message p-2 rounded" id="userMessage" style={{ color: 'white', backgroundColor: '#5348c8' }}>
-                    <p>I'd like to book a meeting with you please.</p>
+                <div className="p-2 bg-white shadow-xl rounded-md flex flex-col h-full pt-8">
+                  <div className="flex flex-col-reverse">
+                    <div id="userMessage" className="p-3 rounded mb-4 self-end bg-gray-100" style={{ color: settings.userMessageColor, backgroundColor: settings.userMessageBackgroundColor }}>
+                      <p>I'd like to book a meeting with you please.</p>
+                    </div>
+                    <div id="aiMessage" className="p-3 rounded mb-4 self-start bg-gray-200" style={{ color: settings.aiMessageColor, backgroundColor: settings.aiMessageBackgroundColor }}>
+                      <p>{settings.firstMessage}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="chat-input p-4 border-t border-gray-300 flex items-center">
-                  <input type="text" placeholder="Type a message..." className="flex-1 p-2 border border-gray-300 rounded-l-lg" />
-                  <button className="btn btn-send text-white py-2 px-4 rounded-r-lg ml-2" style={{ backgroundColor: '#360374' }}>Send</button>
+
+                <div className="border-t pt-4 pb-4 relative">
+                  <input type="text" placeholder="Type a message..." className="w-full p-4 border rounded-lg" />
+                  <RiSendPlaneFill  className='absolute right-6 bottom-9  text-gray-600'/>
+                  {/* <button className="bg-purple-600 text-white py-2 px-4 rounded-r-lg ml-2 hover:bg-purple-700 transition">Send</button> */}
                 </div>
               </div>
+
             </div>
           </div>
         </div>
-
         <div id="videoAvatar" className={`tab-content ${activeTab === 'videoAvatar' ? 'block' : 'hidden'}`}>
           <div className="flex flex-col md:flex-row">
             <div className="avatar-left w-full md:w-1/2 p-4 bg-white shadow-lg rounded-lg md:mr-4 mb-4 md:mb-0">
@@ -195,7 +253,8 @@ const Customize = () => {
         </div>
       </div>
     </div>
+    
   );
-}
+};
 
 export default Customize;
